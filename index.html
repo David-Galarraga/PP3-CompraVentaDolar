@@ -4,10 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="contActual">
+        <h1>Dolares actuales</h1>
+        <div id="actualDollars" class="actualDollars">
+            
+        </div>
+    </div>
+    <div class="container">
+        <h1>Convertidor</h1>
+        <div class="inputPesos">
+            <label for="inputPesos">Pesos a convertir (mín 1)</label> <br>
+            <input type="number" id="quantityPesos" name="inputPesos" value="100" min="1"> <br>
+            
+            <label for="dolarSelector">Elegí un tipo de dólar:</label> <br>
+            <select id="dolarSelector">
+                <option value="">-- Seleccioná una opción --</option>
+                <option value="oficial">Dólar Oficial</option>
+                <option value="blue">Dólar Blue</option>
+                <option value="bolsa">Dólar MEP (Bolsa)</option>
+            </select> <br>
 
+            <button type="button" id="btnConvert" class="btnConvert">Convertir</button>
+        </div>
+        
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

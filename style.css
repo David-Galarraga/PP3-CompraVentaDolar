@@ -1,0 +1,40 @@
+h1 {
+    font-size: 2.5rem;
+    margin-top: 0;
+    color: rgb(16, 2, 2);
+}
+label {
+    font-size: 18px;
+}
+.container {
+    padding: 1rem;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border: 2px solid black;
+    background-color: #719177;
+    margin-top: 5px;
+    border-radius: 10px;
+}
+.contActual {
+    padding: 1rem;
+    width: 100%;
+    max-width: 400px;
+    max-height: 170px;
+    text-align: center;
+    border: 2px solid black;
+    background-color: #719177;
+    margin-top: 5px;
+    border-radius: 10px;
+}
+body {
+    justify-items: center;
+}
+.hidden{
+    display: none;
+}
+.btnConvert {
+    margin: 10px;
+    height: 50px;
+    font-size: 1rem;
+}
