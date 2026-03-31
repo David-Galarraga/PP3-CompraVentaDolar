@@ -15,9 +15,9 @@
     </div>
     <div class="container">
         <h1>Convertidor</h1>
-        <div class="inputPesos">
+        <div class="activeCard" id="selectCard">
             <label for="inputPesos">Pesos a convertir (mín 1)</label> <br>
-            <input type="number" id="quantityPesos" name="inputPesos" value="100" min="1"> <br>
+            <input type="string" id="quantityPesos" name="inputPesos" placeholder="mín 1"> <br>
             
             <label for="dolarSelector">Elegí un tipo de dólar:</label> <br>
             <select id="dolarSelector">
@@ -30,6 +30,9 @@
             <button type="button" id="btnConvert" class="btnConvert">Convertir</button>
         </div>
         
+        <div class="hidden" id="dollarConverted">
+
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

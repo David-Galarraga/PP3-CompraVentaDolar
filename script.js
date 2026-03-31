@@ -2,6 +2,9 @@ const qtty = document.getElementById("quantityPesos");
 const btnCon = document.getElementById("btnConvert");
 const actDollar = document.getElementById("actualDollars");
 
+const dollarConv = document.getElementById("dollarConverted");
+const selecCard = document.getElementById("selectCard");
+
 async function getData() { // fecht asincrono
     try {
         const response = await fetch('https://dolarapi.com/v1/dolares');
@@ -11,8 +14,6 @@ async function getData() { // fecht asincrono
         }
         
         const data = await response.json(); // convertir a .json
-        
-        console.log(data);
 
         // funciones que usan este fetch
         getActualDollars(data);
@@ -38,18 +39,42 @@ function getActualDollars(data){
 }
 
 function getDollar(data){
-    const valueConvert = Math.max(1, parseInt(qtty.value) || 1);
-
     const selector = document.getElementById('dolarSelector');
-    const chosenDollar = selector.value; // Captura el value actual
-    
-    if (chosenDollar && valueConvert) {
-        alert(chosenDollar);    
+    const chosenDollar = selector.value; // captura el value actual
+
+    if (qtty.value === "") {
+        alert("El campo está vacío");
+    } else if (isNaN(qtty.value)) {
+        alert("Lo que ingresaste no es un número");
     } else {
-        alert("Seleccione un tipo de dolar");
+        const valueConvert = parseFloat(qtty.value);
+
+        if (chosenDollar && valueConvert) {
+            const dollar = data.find(dollar => dollar.casa === chosenDollar)
+
+            let convertCompra = valueConvert / dollar.compra;
+            let convertVenta = valueConvert / dollar.venta;
+
+            selecCard.classList.remove('activeCard');
+            selecCard.classList.add('hidden');
+
+            dollarConv.classList.remove('hidden')
+            dollarConv.classList.add('activeCard')
+            dollarConv.innerHTML =
+                `<div class="${chosenDollar}">
+                    <h1>${chosenDollar}</h1>
+                    <h3>Comprando dólares: US$ ${convertVenta.toFixed(2)}</h3>
+                    <p><small>Usando cotización de venta: $${dollar.venta}</small></p>
+                    <hr>
+                    <h3>Si vendieras tus dólares: $${(convertVenta * dollar.compra).toFixed(2)}</h3>
+                    <p><small>Usando cotización de compra: $${dollar.compra}</small></p>
+                </div>`;
+
+
+
+        } else {
+            alert("No ha seleccionado un tipo de dolar o ingreso 0 en el convertidor");
+        }
     }
-    
-
-
 };
 
